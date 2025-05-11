@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = module.require('html-webpack-plugin')
+const webpack = module.require('webpack')
 const path = module.require('node:path')
+require('dotenv').config();
 
 module.exports = {
   mode: 'development',
@@ -9,6 +11,10 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html',
     }),
+    new webpack.DefinePlugin({
+      'process.env.GEO_API_URL': JSON.stringify(process.env.GEO_API_URL),
+      'process.env.GEO_API_KEY': JSON.stringify(process.env.GEO_API_KEY),
+    }),
   ],
   output: {
     filename: 'bundle.js',
@@ -16,8 +22,11 @@ module.exports = {
     clean: true,
   },
   resolve: {
+    extensions: [
+      '.js', '.ts', '.mjs', '.mts', '.cjs', '.cts', '.jpg', '.svg', '.png', '.jpeg', '.gif', '.css', '.sass', '.scss'
+    ],
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   devServer: {
@@ -28,7 +37,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(css|scss|sass)$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {

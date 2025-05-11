@@ -3,14 +3,16 @@
   "_version": "22.0.0",
   "compilerOptions": {
     "lib": [
+      "DOM.Iterable",
+      "DOM",
       "es2023"
     ],
-    "module": "nodenext",
+    "module": "ES2015",
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
+    "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
       "@/*": [
