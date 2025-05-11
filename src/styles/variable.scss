@@ -1,0 +1,13 @@
+:root {
+  --title-color: white;
+  --text-color: black;
+  --bg-color: white;
+  --bg-button: black;
+  --gray-800: hsl(0, 0%, 17%);
+  --gray-400: hsl(0, 0%, 59%);
+
+  --max-h-bg-header: 15rem;
+  --max-h-map: calc(100dvh - 15rem);
+  --max-w-address-details: 70rem;
+  --max-w-address-items: 14rem;
+}
