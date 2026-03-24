@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = module.require('html-webpack-plugin')
+const GA4WebpackPlugin = require('ga4-webpack-plugin');
 const webpack = module.require('webpack')
 const path = module.require('node:path')
 require('dotenv').config();
@@ -14,6 +15,11 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.GEO_API_URL': JSON.stringify(process.env.GEO_API_URL),
       'process.env.GEO_API_KEY': JSON.stringify(process.env.GEO_API_KEY),
+    }),
+    new GA4WebpackPlugin({
+      id: process.env.GOOGLE_ANALYTICS_ID,
+      inject: true,
+      callConfig: true
     }),
   ],
   output: {
